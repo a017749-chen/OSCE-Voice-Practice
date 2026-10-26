@@ -1,0 +1,27 @@
+# Public practice snapshot, 2026-10-27; not a national standards claim.
+station:
+  minutes: 8
+limits:
+  sign_patient_info_chars: 30
+  candidate_background_chars: 30
+  candidate_tasks_max: 3
+  differentials_min: 3
+checklist:
+  items_min: 10
+  items_max: 15
+  items_default: 15
+  high_discrimination_min: 2
+  high_discrimination_max: 5
+  generic_items_max: 1
+  main_construct_min_fraction: 0.5
+  sub_items_max: 3
+station_types:
+  history:
+    lqqopera_max_fraction: 0.3
+  communication:
+    teach_back_required: true
+sp:
+  questions_max: 5
+  scoring_questions_max: 2
+  dialogue_question_rows_max: 2
+  prompted_item_score_cap: 1

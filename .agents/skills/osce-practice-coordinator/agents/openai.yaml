@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSCE 從想法到語音練習"
+  short_description: "將實習醫學生的練習想法轉成教案、考生指引與可攜式病人語音包"
+  default_prompt: "請用 $osce-practice-coordinator 把我的 idea 轉成可練習的 OSCE 教案與語音演練包。"

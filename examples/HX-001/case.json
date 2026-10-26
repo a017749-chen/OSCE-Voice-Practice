@@ -1,0 +1,489 @@
+{
+  "schema_version": "1.0",
+  "case_version": "1.0",
+  "fictional": true,
+  "learner": "醫學系實習醫學生",
+  "mode": "exam-practice",
+  "validation": {
+    "structure": "產出後另見 QA 紀錄",
+    "text_roleplay": "產出後另見 QA 紀錄",
+    "voice_live": "未實測",
+    "teacher_review": "待教師審閱"
+  },
+  "station_id": "HX-001",
+  "number": "1",
+  "station_type": "history",
+  "title": "反覆右上腹痛病史詢問",
+  "sign": "46歲女性，反覆上腹痛",
+  "design": {
+    "objective": "在模擬門診中，蒐集反覆上腹痛的時序、鑑別線索與警訊，理解病人擔憂並完成可核對的摘要。",
+    "core_task": "8 分鐘內完成聚焦病史與摘要；不要求確診、完整處置或身體檢查。",
+    "competencies": [
+      "聚焦資訊蒐集 → H02–H04、H07、H10–H13 → 對應 F02–F05、F08、F11–F15。",
+      "辨識重要鑑別與警訊 → H05、H06、H08、H09 → F06、F07、F09、F10。",
+      "以病人為中心並整理資訊 → H01、H14、H15 → F01、F16 及前述事實。"
+    ],
+    "decisions": [
+      "15 項、30 分；LQQOPERA 三群組 H02–H04，未超過 15 項時的四群組上限。",
+      "共通項 H01 一項；★H05/H06/H08/H09 共四項，屬設計意圖。",
+      "預設考前練習；閱覽完整教案後標為已知題。所有身分與病程為虛構。"
+    ]
+  },
+  "candidate": {
+    "background": "你是門診實習醫學生，接待反覆上腹痛病人",
+    "tasks": [
+      "完成聚焦病史詢問",
+      "向病人摘要並確認資訊"
+    ],
+    "notes": [
+      "本站不評分身體檢查、診斷告知或治療處方。"
+    ],
+    "available_data": "下列生命徵象與主訴進站即可取得；沒有檢驗或影像可追加。其他病史由考生詢問。",
+    "report": {
+      "vitals": "BP 122/76 mmHg、HR 78/min、RR 16/min、BT 36.7°C",
+      "symptoms": "反覆上腹痛，目前無痛",
+      "other": "尚未進行血液檢驗或影像檢查",
+      "other_2": "本次只進行病史詢問"
+    }
+  },
+  "examiner": {
+    "setting": "一般門診",
+    "sp_profile": "46 歲女性林雅雯，餐飲店工作者，虛構角色",
+    "start_position": "坐於診椅，身體微向前，當下無疼痛",
+    "props": "考生指引、生命徵象卡、桌椅、語音設備、外部計時器；真人版可設考官一人",
+    "summary": "林雅雯，46 歲，兩個月內三次右上腹悶緊痛，最近一次為昨天晚餐後，約 90 分鐘自行緩解，最痛 6/10，可延伸右背。油膩餐點後出現，會噁心但未吐；無發燒寒顫、黃疸、深色尿、灰白便、黑便吐血或心肺症狀。曾被說有胃炎，未做超音波。擔心肝病，想找出原因。病史較支持膽石相關疼痛，但尚無影像確認；不應稱已確診膽囊炎。",
+    "differentials": [
+      "症狀性膽結石／膽絞痛（待檢查確認）",
+      "消化性潰瘍或胃炎",
+      "功能性消化不良",
+      "急性冠心症等需依病史辨識的重要鑑別"
+    ]
+  },
+  "patient": {
+    "identity": "林雅雯，46 歲女性，餐飲店工作者；所有資料均為虛構。",
+    "opening": "醫師，我這兩個月上腹會痛，想來問看看。",
+    "unknown_response": "檢查結果未提供時說『還沒做過這個檢查，我不清楚』；未設定的其他重要病史不可一律回答沒有，先說不確定；影響任務時暫停補資料。",
+    "emotion_rules": "初始擔心 4/10。學生探索擔憂並回應時降到 2/10，說『這樣我比較安心』；被忽略則維持 4/10，不突然哭泣或新增症狀。",
+    "teach_back": "本站不評衛教 teach-back。若學生確認摘要，只核對他剛說的病史；他把疼痛說成連續兩個月時，澄清是三次發作，其餘日子不痛。"
+  },
+  "facts": [
+    {
+      "id": "F01",
+      "trigger": "詢問姓名、年齡或同意詢問",
+      "response": "我叫林雅雯，46歲；可以，請問。"
+    },
+    {
+      "id": "F02",
+      "trigger": "開放敘述或詢問何時開始、頻率、最近一次",
+      "response": "兩個月前第一次痛，這段時間總共三次；最近一次是昨天晚餐後，其他日子不痛。"
+    },
+    {
+      "id": "F03",
+      "trigger": "詢問位置、性質、放射",
+      "response": "在右邊上腹，悶悶緊緊的，有時往右邊背部延伸。"
+    },
+    {
+      "id": "F04",
+      "trigger": "詢問持續時間、誘因、緩解或嚴重度",
+      "response": "多在吃油膩餐點後出現，一次約一到兩小時，昨天約90分鐘；最痛6分，後來自己慢慢好，沒有特別姿勢能改善。現在不痛。"
+    },
+    {
+      "id": "F05",
+      "trigger": "詢問排便是否緩解、胸口灼熱或吞嚥",
+      "response": "排便不會讓疼痛變好；沒有明顯火燒心或吞嚥困難。"
+    },
+    {
+      "id": "F06",
+      "trigger": "詢問發燒或寒顫",
+      "response": "發作時沒有發燒，也沒有冷到發抖。"
+    },
+    {
+      "id": "F07",
+      "trigger": "詢問黃疸、尿色或糞便顏色",
+      "response": "沒有眼白或皮膚變黃，尿沒有變茶色，大便也沒有變灰白。"
+    },
+    {
+      "id": "F08",
+      "trigger": "詢問噁心、嘔吐或飲食耐受",
+      "response": "痛的時候有點噁心，但沒吐，現在吃喝都可以。"
+    },
+    {
+      "id": "F09",
+      "trigger": "詢問黑便、血便或吐血",
+      "response": "沒有黑便、血便或吐血。"
+    },
+    {
+      "id": "F10",
+      "trigger": "詢問胸悶胸痛、呼吸或活動關聯",
+      "response": "沒有胸痛、胸悶或喘，走路爬樓梯不會引起這個痛。"
+    },
+    {
+      "id": "F11",
+      "trigger": "詢問既往腸胃、肝膽病史與檢查",
+      "response": "五年前醫師說過胃炎，沒做過胃鏡或腹部超音波，沒被診斷肝炎、膽結石或胰臟炎，沒有腹部手術。"
+    },
+    {
+      "id": "F12",
+      "trigger": "詢問藥物、保健品與過敏",
+      "response": "沒有固定吃藥、止痛藥或保健品，沒有已知藥物過敏。"
+    },
+    {
+      "id": "F13",
+      "trigger": "詢問菸酒或工作與飲食",
+      "response": "不抽菸，約一個月喝一罐啤酒。在餐飲店工作，常吃店裡比較油的便當，沒有突然大幅減重。"
+    },
+    {
+      "id": "F14",
+      "trigger": "詢問月經或懷孕可能",
+      "response": "月經規律，上次月經兩週前，沒有延遲；有固定避孕，自己認為沒有懷孕，但未驗孕。"
+    },
+    {
+      "id": "F15",
+      "trigger": "詢問家族史",
+      "response": "媽媽有過膽結石；沒有家人得肝癌或胃癌。"
+    },
+    {
+      "id": "F16",
+      "trigger": "探索想法、擔心與期待",
+      "response": "我以為可能是肝不好，怕拖久了變嚴重；希望知道要做什麼檢查找原因。"
+    },
+    {
+      "id": "F17",
+      "trigger": "考生摘要並邀請核對",
+      "response": "若摘要正確說『對，大概就是這樣』；如說持續疼痛兩個月則澄清兩個月只有三次，其餘按固定事實更正。"
+    }
+  ],
+  "active_questions": [],
+  "rubric": {
+    "max_score": 30,
+    "items": [
+      {
+        "id": "H01",
+        "text": "介紹角色、核對身分並取得詢問同意",
+        "anchors": {
+          "0": "三者皆未做",
+          "1": "完成其中一至二項",
+          "2": "三項皆完成"
+        },
+        "fact_ids": [
+          "F01"
+        ],
+        "star": false,
+        "generic": true,
+        "main_construct": false,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H02",
+        "text": "釐清首發、發作次數及最近一次時點",
+        "anchors": {
+          "0": "皆未釐清",
+          "1": "釐清一至二項",
+          "2": "釐清三項，辨別間歇發作"
+        },
+        "fact_ids": [
+          "F02"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": true,
+        "sp_prompted": false
+      },
+      {
+        "id": "H03",
+        "text": "釐清位置、性質及放射部位",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆詢問"
+        },
+        "fact_ids": [
+          "F03"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": true,
+        "sp_prompted": false
+      },
+      {
+        "id": "H04",
+        "text": "釐清發作時間長度、餐食關聯及緩解方式",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆釐清"
+        },
+        "fact_ids": [
+          "F04"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": true,
+        "sp_prompted": false
+      },
+      {
+        "id": "H05",
+        "text": "詢問發燒及寒顫作為感染警訊",
+        "anchors": {
+          "0": "兩者皆未詢問",
+          "1": "只詢問其中一項",
+          "2": "兩項皆詢問"
+        },
+        "fact_ids": [
+          "F06"
+        ],
+        "star": true,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H06",
+        "text": "詢問黃疸、深色尿及灰白便",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆詢問"
+        },
+        "fact_ids": [
+          "F07"
+        ],
+        "star": true,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H07",
+        "text": "詢問噁心、嘔吐及進食耐受",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆詢問"
+        },
+        "fact_ids": [
+          "F08"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H08",
+        "text": "詢問黑便或血便及吐血",
+        "anchors": {
+          "0": "兩類皆未詢問",
+          "1": "只詢問糞便出血或吐血其中一類",
+          "2": "詢問糞便出血及吐血兩類"
+        },
+        "fact_ids": [
+          "F09"
+        ],
+        "star": true,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H09",
+        "text": "詢問胸部不適、呼吸困難及活動關聯",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆詢問"
+        },
+        "fact_ids": [
+          "F10"
+        ],
+        "star": true,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H10",
+        "text": "探索既往肝膽腸胃疾病及相關檢查",
+        "anchors": {
+          "0": "兩類皆未問",
+          "1": "只問疾病或既往檢查其中一類",
+          "2": "詢問疾病並確認曾否接受相關檢查"
+        },
+        "fact_ids": [
+          "F11"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H11",
+        "text": "詢問用藥、保健品與藥物過敏",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項",
+          "2": "三項皆詢問"
+        },
+        "fact_ids": [
+          "F12"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": false,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H12",
+        "text": "探索飲酒量、吸菸及飲食生活脈絡",
+        "anchors": {
+          "0": "皆未詢問",
+          "1": "詢問一至二項，或飲酒未釐清量",
+          "2": "三項皆詢問，飲酒包含量與頻率"
+        },
+        "fact_ids": [
+          "F13"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": false,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H13",
+        "text": "詢問末次月經並釐清懷孕可能",
+        "anchors": {
+          "0": "兩者皆未問",
+          "1": "只問其中一項",
+          "2": "詢問末次月經與懷孕可能，不把避孕當絕對排除"
+        },
+        "fact_ids": [
+          "F14"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": false,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H14",
+        "text": "探索病人的疾病想法、擔憂及期待",
+        "anchors": {
+          "0": "皆未探索",
+          "1": "探索一至二項",
+          "2": "三項皆探索並回應最主要擔憂"
+        },
+        "fact_ids": [
+          "F16"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      },
+      {
+        "id": "H15",
+        "text": "摘要時間型態與關鍵線索並邀請更正",
+        "anchors": {
+          "0": "未摘要",
+          "1": "有摘要但缺時間型態或未邀請更正",
+          "2": "摘要間歇發作及一項關鍵陽性或陰性線索，邀請更正"
+        },
+        "fact_ids": [
+          "F02",
+          "F03",
+          "F04",
+          "F17"
+        ],
+        "star": false,
+        "generic": false,
+        "main_construct": true,
+        "lqqopera": false,
+        "sp_prompted": false
+      }
+    ],
+    "global_anchors": {
+      "1": "無法形成可用的主訴病史，重要警訊幾乎未探索。",
+      "2": "已取得部分主訴型態，但警訊或鑑別線索仍有大幅缺漏，無法完成足夠聚焦的病史。",
+      "3": "建立主要病史與部分警訊，摘要或病人觀點仍有缺漏。",
+      "4": "聚焦且有結構地取得主要線索、警訊與病人觀點，摘要可核對。",
+      "5": "在4的基礎上，依回答靈活追問且整合資訊，無明顯冗問或主要遺漏。"
+    }
+  },
+  "sp": {
+    "setting": "一般門診",
+    "start_position": "坐於診椅，雙手放在腿上",
+    "emotion": "擔心4/10；目前疼痛0/10",
+    "manner": "神情稍擔憂，沒有冒汗、痛苦扭動或黃疸表演",
+    "voice": "平常口語，語速正常，回答一至三短句",
+    "principles": "只按被問範圍回答，不主動問考點。開放問題可敘述對應範圍，不逐字關鍵字考驗。資料前後一致；結束後才回饋。",
+    "summary": "46歲林雅雯，兩個月三次右上腹間歇悶緊痛，油膩餐後出現，最近一次90分鐘後自行緩解；無感染、膽汁鬱積、出血或心肺症狀。擔心肝病。",
+    "dialogue": [
+      {
+        "frame": "開場",
+        "candidate": "今天哪裡不舒服？",
+        "sp": "我這兩個月上腹會痛，想來問看看。",
+        "question": false
+      },
+      {
+        "frame": "時間型態",
+        "candidate": "請從第一次開始說。",
+        "sp": "兩個月前第一次，總共三次，最近一次是昨天晚餐後。",
+        "question": false
+      },
+      {
+        "frame": "疼痛特徵",
+        "candidate": "痛在哪裡，會跑到別的地方嗎？",
+        "sp": "右邊上腹悶緊，有時到右背。",
+        "question": false
+      },
+      {
+        "frame": "感染警訊",
+        "candidate": "有發燒或冷到發抖嗎？",
+        "sp": "都沒有。",
+        "question": false
+      },
+      {
+        "frame": "膽汁鬱積",
+        "candidate": "有變黃、尿變深或便變灰白嗎？",
+        "sp": "沒有這些情形。",
+        "question": false
+      },
+      {
+        "frame": "病人觀點",
+        "candidate": "您最擔心什麼？",
+        "sp": "怕是肝不好，想知道原因。",
+        "question": false
+      },
+      {
+        "frame": "摘要核對",
+        "candidate": "兩個月是間歇三次，這樣對嗎？",
+        "sp": "對，不是每天痛。",
+        "question": false
+      }
+    ],
+    "room_diagram": "【門診】SP坐診桌左側，考生坐右側；真人版考官位於考生右後方；門與拉簾在後方。語音版只需安靜空間與耳麥。"
+  },
+  "sources": [
+    {
+      "id": "NIDDK-gallstones",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/symptoms-causes",
+      "use": "膽石疼痛型態與發燒、黃疸、尿便顏色等警訊背景；不證明本虛構病例已確診。",
+      "checked": "2026-10-26"
+    }
+  ]
+}

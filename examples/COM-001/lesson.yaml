@@ -1,0 +1,273 @@
+station_type: communication
+number: '2'
+sign: 52歲男性，回診討論健檢結果
+candidate:
+  background: 你是門診實習醫學生，協助健檢後衛教
+  tasks:
+  - 探索病人的理解與擔憂
+  - 說明檢查意義並協商生活調整
+  - 確認理解與後續安排
+  notes:
+  - 主治醫師已評估糖尿病前期；本站不評診斷、身體檢查或藥物處方。
+  available_data: 以下資料進站可取得；另由病人說明生活與擔憂。沒有其他檢驗可追加。
+  report:
+    vitals: BP 128/80 mmHg、HR 76/min、RR 16/min、BT 36.6°C
+    symptoms: 沒有明顯口渴、多尿或近期體重驟降
+    other: 空腹血糖110 mg/dL；HbA1c 6.1%；身高168 cm、體重80 kg、BMI 28.3
+    other_2: 醫師評估糖尿病前期，已安排三個月後門診追蹤
+examiner:
+  setting: 一般門診健檢後衛教
+  sp_profile: 52歲男性陳志明，物流倉儲夜班工作者，虛構角色
+  start_position: 坐在桌前，手拿健檢單
+  props: 健檢結果卡、桌椅、語音設備、外部計時器；真人版可設考官一人
+  summary: 52歲陳志明，空腹血糖110 mg/dL、HbA1c6.1%，主治已評估糖尿病前期。父親罹糖尿病且接受透析，病人怕自己也一定會洗腎。固定夜班、常喝含糖飲料且少運動；願意先改一個習慣。期待可執行的安排而非被責備。三個月後回診已由門診安排。
+  differentials:
+  - 疾病認知：把糖尿病前期誤認為已確診且必定透析
+  - 生活脈絡：夜班、含糖飲料、缺乏運動時間
+  - 家庭經驗：父親透析造成焦慮，需探索並回應
+sp:
+  setting: 一般門診
+  start_position: 坐在桌前，拿著健檢報告
+  emotion: 焦慮6/10
+  manner: 眉頭略皺，關心醫師說明；語音版不朗讀表情
+  voice: 生活口語，擔憂時語速稍快，避免長篇獨白
+  principles: 主要被動回答。Q01只有首次具體飲食、飲料或活動建議後停頓且仍未探索障礙才提出一次；僅檢查或風險說明後不可提問；已問障礙不提問。首次回述保留運動飲料誤解，經澄清才修正。
+  summary: 52歲陳志明，糖尿病前期，父親透析經驗造成焦慮；固定夜班、每天含糖茶，願從無糖替代開始。不要代學生完成衛教或自動同意過大的目標。
+  dialogue:
+  - frame: 開場
+    candidate: 您今天最想談什麼？
+    sp: 血糖偏高，心裡有點怕。
+    question: false
+  - frame: 理解
+    candidate: 您怎麼理解這個結果？
+    sp: 以為就是糖尿病，以後可能要洗腎。
+    question: false
+  - frame: 擔憂
+    candidate: 什麼讓您想到洗腎？
+    sp: 我爸爸就是這樣，我怕跟他一樣。
+    question: false
+  - frame: 生活
+    candidate: 上班時飲食飲料怎麼安排？
+    sp: 上夜班，常喝一瓶含糖茶，吃便當。
+    question: false
+  - frame: 條件性Q01：首次具體生活建議後，仍未問障礙
+    candidate: 考生提出第一個具體生活建議後停頓
+    sp: 我都上夜班，這樣要怎麼安排？
+    question: true
+  - frame: 偏好
+    candidate: 您想先從哪一項改變？
+    sp: 先把那瓶含糖茶換成無糖茶比較做得到。
+    question: false
+  - frame: Teach-back 初次回述
+    candidate: 請用自己的話說說您會怎麼選飲料。
+    sp: 不喝汽水，改成每天一瓶運動飲料就好。
+    question: false
+  - frame: Teach-back 澄清後
+    candidate: 運動飲料也可能有糖，您會改選什麼？
+    sp: 白開水或無糖茶。
+    question: false
+  room_diagram: 【門診】SP坐診桌左側持報告，考生坐右側；真人版考官坐右後方，拉簾在門旁；語音版使用安靜空間與耳麥。
+rubric: checklist
+checklist:
+- id: C01
+  text: 介紹角色、核對身分並取得談話同意
+  anchors:
+    '0': 皆未做
+    '1': 完成一至二項
+    '2': 三項皆完成
+  fact_ids:
+  - F01
+  star: false
+  generic: true
+  main_construct: false
+  lqqopera: false
+  sp_prompted: false
+- id: C02
+  text: 探索病人對檢查結果的既有理解
+  anchors:
+    '0': 未探索
+    '1': 只封閉詢問是否了解，未取得具體解讀
+    '2': 以開放提問取得其對血糖偏高的具體解讀，包含以為已是糖尿病的想法
+  fact_ids:
+  - F02
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C03
+  text: 探索最主要擔憂及其來源
+  anchors:
+    '0': 未探索
+    '1': 只問擔憂或來源其中之一
+    '2': 問出擔憂並探索父親透析的經驗
+  fact_ids:
+  - F03
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C04
+  text: 具體回應焦慮並提供支持
+  anchors:
+    '0': 忽略或責備
+    '1': 只有泛稱別擔心或機械同理
+    '2': 連結父親經驗命名擔憂，表達理解與共同面對
+  fact_ids:
+  - F03
+  - F04
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C05
+  text: 用白話說明糖尿病前期與進展的不確定性
+  anchors:
+    '0': 錯誤宣稱已確診或必然洗腎，或未說明
+    '1': 僅說明高於正常或不一定進展其中一項
+    '2': 說明高於正常但未達糖尿病，並指出非必然進展且可採行動降低風險
+  fact_ids:
+  - F02
+  - F05
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C06
+  text: 探索日常飲食及含糖飲料習慣
+  anchors:
+    '0': 未探索
+    '1': 只問飲食或飲料其中一類
+    '2': 兩類皆探索，取得可供協商的具體習慣
+  fact_ids:
+  - F06
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C07
+  text: 主動探索工作時程與活動障礙
+  anchors:
+    '0': 未探索
+    '1': 只問一類，或經Q01提示後才探索
+    '2': 未經Q01提示即問工作時程與具體障礙
+  fact_ids:
+  - F07
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: true
+- id: C08
+  text: 提供與病人習慣相連的飲食或飲料替代
+  anchors:
+    '0': 無建議或給錯誤建議
+    '1': 只有泛稱少糖少油，未連結習慣
+    '2': 依已知習慣提出可選的具體替代並詢問接受度
+  fact_ids:
+  - F06
+  - F08
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C09
+  text: 提出可漸進且配合夜班的活動方式
+  anchors:
+    '0': 未提或要求明顯不切實際且不協商
+    '1': 只有多運動，或只給固定目標未協商
+    '2': 提出如短時間步行的起點並詢問可行性，說明可逐步增加
+  fact_ids:
+  - F07
+  - F08
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C10
+  text: 邀請病人選擇優先改變項目
+  anchors:
+    '0': 單方決定或未談改變
+    '1': 列選項但未請病人選
+    '2': 提供選擇並採用病人偏好的起點
+  fact_ids:
+  - F08
+  - F10
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C11
+  text: 共同訂定具體行動與檢視方式
+  anchors:
+    '0': 沒有計畫
+    '1': 有行動但缺執行時段或記錄檢視
+    '2': 共同訂定具體行動、執行期間及記錄或檢視方式
+  fact_ids:
+  - F10
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C12
+  text: 評估信心並協商一個障礙解法或支持
+  anchors:
+    '0': 皆未做
+    '1': 只問信心或只談解法
+    '2': 評估信心並依回答協商一個障礙解法或支持
+  fact_ids:
+  - F09
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C13
+  text: Teach-back 邀請回述並澄清既定誤解
+  anchors:
+    '0': 未確認或只問懂不懂
+    '1': 有回述但未辨識澄清運動飲料誤解
+    '2': 請病人用自己的話回述，澄清誤解並再次確認
+  fact_ids:
+  - F11
+  - F12
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C14
+  text: 確認既定回診安排及困難時求助方式
+  anchors:
+    '0': 皆未談
+    '1': 只談回診或求助其中一項
+    '2': 確認三個月回診與困難時聯絡門診方式
+  fact_ids:
+  - F13
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: C15
+  text: 結尾摘要共同計畫並邀請剩餘問題
+  anchors:
+    '0': 皆未做
+    '1': 只有摘要或邀請問題其中一項
+    '2': 簡短重申已議定計畫，邀請剩餘問題並回應
+  fact_ids:
+  - F10
+  - F13
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false

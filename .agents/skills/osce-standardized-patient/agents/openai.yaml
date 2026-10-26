@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSCE 標準化病人"
+  short_description: "依既有病例扮演病人，控制資訊揭露、開始暫停結束與語音練習交接"
+  default_prompt: "請用 $osce-standardized-patient 載入附件，先顯示考生指引，等待我說開始演練。"

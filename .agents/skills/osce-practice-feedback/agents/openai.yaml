@@ -1,0 +1,4 @@
+interface:
+  display_name: "OSCE 演練回饋"
+  short_description: "依本站規準與對話證據提供形成性評分，區分缺漏、不可評與提示後表現"
+  default_prompt: "請用 $osce-practice-feedback 依本站教案與已結束的逐字稿評分，列證據與重練建議。"

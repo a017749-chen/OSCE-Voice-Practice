@@ -1,0 +1,52 @@
+# OSCE 語音標準化病人練習
+
+讓醫學系實習醫學生從一個練習想法出發，建立 OSCE 教案，並用 ChatGPT 語音練習病史詢問或醫病溝通。AI 在演練中扮演病人；你說「結束演練」後，它才依對話提供形成性回饋。
+
+**不需要安裝程式就能試用兩個示範。** 病例均為虛構，預設每站 8 分鐘、15 項評分項目。
+
+## 先練一站
+
+| 站次 | 練習 | 下載演練包 | 考生指引 |
+|---|---|---|---|
+| HX-001 | 反覆上腹痛病史詢問 | [下載 TXT](examples/HX-001/voice-packet.txt?raw=1) | [閱讀指引](examples/HX-001/candidate.md) |
+| COM-001 | 健檢結果與生活調整溝通 | [下載 TXT](examples/COM-001/voice-packet.txt?raw=1) | [閱讀指引](examples/COM-001/candidate.md) |
+
+1. 下載一份 TXT。若 GitHub 顯示檔案內容而未下載，可按檔案頁右上角的 **Download raw file**，或儲存成 UTF-8 純文字檔。
+2. 開啟 [ChatGPT](https://chatgpt.com/) 新聊天，上傳該 TXT，並輸入：
+
+   > 請依附件載入本站，只顯示考生指引，確認可開始後等待我。
+
+3. 確認站次與版本後，在**同一個聊天**開啟語音。使用手機或其他計時器倒數 8 分鐘，說「開始演練」。
+4. 與病人對話；想結束時說「結束演練」，再查看逐項回饋與對話證據。
+
+語音及檔案上傳功能依帳號、裝置和設定而異。若附件無法讀取，請改貼 TXT 內容；若切到語音後忘記病例，先重新載入。外部計時器由使用者操作。
+
+| 口令 | 用途 |
+|---|---|
+| 開始演練 | 進入病人角色 |
+| 暫停演練／繼續演練 | 暫停或接續互動，也要自行暫停／恢復計時器 |
+| 目前狀態 | 查詢目前階段與站次 |
+| 結束演練 | 結束病人角色，開始形成性回饋 |
+| 重新練習 | 以同一病例重新開始 |
+
+## 用自己的 idea 出題
+
+1. 複製 [學生出題啟動指令](prompts/idea-to-case.txt) 到新的 ChatGPT 聊天，再加上自己的想法，例如：「我是實習醫學生，想練習向擔心檢查結果的病人說明病情。」
+2. 依 AI 提問確認站型和目標，取得教案與專用語音演練包。若沒有下載檔案的功能，請它輸出完整演練包文字，複製並存成 UTF-8 的 `.txt`。
+3. 在另一個新聊天載入該演練包，依上面的步驟開啟語音練習。
+
+已有完整教案時，也可上傳教案，再貼上[通用標準化病人指令](prompts/standardized-patient.txt)。若教案沒有足夠的病人設定或評分錨點，應先補齊，不應由 AI 虛構評分依據。
+
+## 給教師與進階使用者
+
+- 完整教案：[HX-001 Markdown](examples/HX-001/lesson.md)／[Word](examples/HX-001/lesson.docx?raw=1)；[COM-001 Markdown](examples/COM-001/lesson.md)／[Word](examples/COM-001/lesson.docx?raw=1)。
+- 每站的 `case.json` 是可編輯病例資料；重新匯出的步驟見[教師與維護說明](docs/teacher-guide.md)。
+- 倉庫包含三個可在 Codex 專案中使用的技能：[`osce-practice-coordinator`](.agents/skills/osce-practice-coordinator/SKILL.md)、[`osce-standardized-patient`](.agents/skills/osce-standardized-patient/SKILL.md)、[`osce-practice-feedback`](.agents/skills/osce-practice-feedback/SKILL.md)。把倉庫作為 Codex 工作目錄後，可在提示中輸入對應的 `$技能名稱`；如未顯示，請重新啟動 Codex。參考 [Codex 技能官方說明](https://learn.chatgpt.com/docs/build-skills)。
+- [練習規則快照](rules.practice.yaml)供本版本匯出與檢查使用；它不是「符合最新國考規範」的證明。
+
+## 使用界線
+
+- 教師應在課程使用前審閱病例、評分錨點與 8 分鐘可行性。語音真人試跑與評分者校準目前尚未完成；已有測試及限制見[驗證紀錄](docs/validation.md)。
+- AI 回饋只作**形成性練習**。逐字稿缺段或語音辨識不清時，相關項目應列為「無法判斷」，不應推測學生的眼神、身體檢查或未記錄表現。
+- 演練包與完整教案含答案，拿到檔案的人可以閱讀；這不是保密機制。看過答案後的練習屬已知題。
+- 請使用虛構或經授權且不含可識別病人資訊的材料。本站不能取代臨床照護、教師判斷或正式 OSCE 考試。
