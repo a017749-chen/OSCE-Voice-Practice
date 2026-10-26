@@ -38,6 +38,8 @@ python -m unittest discover -s tests -v
 
 匯出工具不連網、不呼叫模型、不自動開始語音，並拒絕覆寫既有輸出。它輸出考生指引、完整 Markdown 教案、語音演練包、YAML 與雜湊清單；**不輸出 Word**。此處使用的 `rules.practice.yaml` 是此公開發行版的教學預設快照；教師應依所在地、機構與現行測驗規範另行確認。
 
+工具會在新的輸出資料夾使用中文檔名。若經審閱後要更新倉庫內的公開範例，請將 `考生指引.md`、`完整教案.md`、`語音演練包.txt`、`教案內容.yaml` 分別對應至 `candidate.md`、`lesson.md`、`voice-packet.txt`、`lesson.yaml`；`package-manifest.json` 用於核對原匯出結果，包含原始檔名。另需人工更新及逐頁檢查 `lesson.docx`，不能假定 Word 會自動同步。
+
 三個技能必須同放在 `.agents/skills` 下：匯出工具會讀取相鄰 SP 和回饋技能的固定指令，才能建立自含的演練包。
 
 ## 發行維護
