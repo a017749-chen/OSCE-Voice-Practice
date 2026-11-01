@@ -1,4 +1,4 @@
-# Public practice snapshot, 2026-10-27; not a national standards claim.
+# Public practice snapshot, 2026-11-01; not a national standards claim.
 station:
   minutes: 8
 limits:
@@ -19,6 +19,8 @@ station_types:
   history:
     lqqopera_max_fraction: 0.3
   communication:
+    teach_back_required: true
+  explanation:
     teach_back_required: true
 sp:
   questions_max: 5

@@ -13,7 +13,7 @@
     "learner": {"$ref": "#/$defs/text"},
     "mode": {"enum": ["exam-practice", "author-learning"]},
     "design": {"type": "object", "required": ["objective", "core_task", "competencies", "decisions"], "properties": {"objective": {"$ref": "#/$defs/text"}, "core_task": {"$ref": "#/$defs/text"}, "competencies": {"$ref": "#/$defs/texts"}, "decisions": {"$ref": "#/$defs/texts"}}, "additionalProperties": false},
-    "station_type": {"enum": ["history", "communication"]},
+    "station_type": {"enum": ["history", "communication", "explanation"]},
     "number": {"$ref": "#/$defs/text"},
     "sign": {"$ref": "#/$defs/text"},
     "candidate": {"type": "object", "required": ["background", "tasks", "notes", "report", "available_data"], "properties": {"background": {"$ref": "#/$defs/text"}, "tasks": {"$ref": "#/$defs/texts"}, "notes": {"$ref": "#/$defs/texts"}, "available_data": {"$ref": "#/$defs/text"}, "report": {"type": "object", "required": ["vitals", "symptoms", "other", "other_2"], "additionalProperties": {"type": "string"}}}, "additionalProperties": false},

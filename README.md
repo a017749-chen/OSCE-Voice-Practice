@@ -1,15 +1,16 @@
 # OSCE 語音標準化病人練習
 
-讓醫學系實習醫學生從一個練習想法出發，建立 OSCE 教案，並用 ChatGPT 語音練習病史詢問或醫病溝通。AI 在演練中扮演病人；你說「結束演練」後，它才依對話提供形成性回饋。
+讓醫學系實習醫學生從一個練習想法出發，依國考型五大部分架構建立 OSCE 教案，並用 ChatGPT 語音模式（網頁版或 App）練習**病史詢問**、**醫病溝通與衛教**或**病情解釋及臨床處置**。AI 在演練中扮演標準化病人；你說「結束演練」後，它才依對話提供逐項形成性回饋。
 
-**不需要安裝程式就能試用兩個示範。** 病例均為虛構，預設每站 8 分鐘、15 項評分項目。
+**不需要安裝程式就能試用三個示範（涵蓋三大題型）。** 病例均為虛構，預設每站 8 分鐘、15 項評分項目（滿分 30 分）。
 
 ## 先練一站
 
-| 站次 | 練習 | 下載演練包 | 考生指引 |
-|---|---|---|---|
-| HX-001 | 反覆上腹痛病史詢問 | [下載 TXT](examples/HX-001/voice-packet.txt?raw=1) | [閱讀指引](examples/HX-001/candidate.md) |
-| COM-001 | 健檢結果與生活調整溝通 | [下載 TXT](examples/COM-001/voice-packet.txt?raw=1) | [閱讀指引](examples/COM-001/candidate.md) |
+| 站次 | 題型 | 練習主題 | 下載演練包 | 考生指引 |
+|---|---|---|---|---|
+| HX-001 | 病史詢問 | 反覆上腹痛病史詢問 | [下載 TXT](examples/HX-001/voice-packet.txt?raw=1) | [閱讀指引](examples/HX-001/candidate.md) |
+| COM-001 | 醫病溝通與衛教 | 健檢結果與生活調整溝通 | [下載 TXT](examples/COM-001/voice-packet.txt?raw=1) | [閱讀指引](examples/COM-001/candidate.md) |
+| EXP-001 | 病情解釋及臨床處置 | 急診右下腹痛檢查結果解釋與處置決策 | [下載 TXT](examples/EXP-001/voice-packet.txt?raw=1) | [閱讀指引](examples/EXP-001/candidate.md) |
 
 1. 下載一份 TXT。若 GitHub 顯示檔案內容而未下載，可按檔案頁右上角的 **Download raw file**，或儲存成 UTF-8 純文字檔。
 2. 開啟 [ChatGPT](https://chatgpt.com/) 新聊天，上傳該 TXT，並輸入：
@@ -37,9 +38,11 @@
 
 1. 開啟[學生出題啟動指令](prompts/idea-to-case.txt)。
 2. 複製**整份文字**，包括後半段的標準化病人規則。可以使用 GitHub 檔案頁右上角的複製按鈕，或先選 Raw 再全選複製。
-3. 開啟 [ChatGPT 網頁版](https://chatgpt.com/)的新聊天，貼上剛才複製的指令，再加上自己的 idea。例如：
+3. 開啟 [ChatGPT](https://chatgpt.com/)（網頁版或 App）的新聊天，貼上剛才複製的指令，再加上自己的 idea（支援**病史詢問**、**醫病溝通與衛教**、**病情解釋及臨床處置**）。例如：
 
-   > 我是醫學系實習醫學生，想練習急診胸痛病人的病史詢問。請用合理預設製作一個 8 分鐘的 OSCE 站，並產生完整教案、考生指引及標準化病人語音演練包。練習前只顯示考生指引。
+   - **病史詢問**：`我是醫學系實習醫學生，想練習急診胸痛病人的病史詢問。請用合理預設製作一個 8 分鐘的 OSCE 站，並產生完整教案、考生指引及標準化病人語音演練包。練習前只顯示考生指引。`
+   - **醫病溝通與衛教**：`我是醫學系實習醫學生，想練習氣喘吸入器使用與誘發因子衛教的溝通站。請用合理預設製作 8 分鐘 OSCE 站與語音演練包，練習前只顯示考生指引。`
+   - **病情解釋及臨床處置**：`我是醫學系實習醫學生，想練習向急診膽囊發炎病人解釋檢查報告並討論手術與替代處置的病情解釋站。請用合理預設製作 8 分鐘 OSCE 站與語音演練包，練習前只顯示考生指引。`
 
 ### 第二步：確認藍圖並取得演練包
 
@@ -68,11 +71,11 @@ GPT 可能會詢問站型、目標或情境；可以回答問題，也可以說�
 
 ### 已有教案時
 
-上傳完整教案，再貼上[通用標準化病人指令](prompts/standardized-patient.txt)。若教案沒有足夠的病人設定或評分錨點，應先補齊，不應由 AI 虛構評分依據。
+將既有五大部分完整教案（Word `.docx` 或 Markdown，涵蓋病史詢問、醫病溝通與衛教、病情解釋及臨床處置）上傳到新聊天，再貼上[通用標準化病人指令](prompts/standardized-patient.txt)；待 GPT 回覆只顯示考生指引並確認準備完成後，即可在同一聊天開啟語音模式說「開始演練」。若教案沒有足夠的病人設定或評分錨點，應先補齊，不應由 AI 虛構評分依據。
 
 ## 給教師與進階使用者
 
-- 完整教案：[HX-001 Markdown](examples/HX-001/lesson.md)／[Word](examples/HX-001/lesson.docx?raw=1)；[COM-001 Markdown](examples/COM-001/lesson.md)／[Word](examples/COM-001/lesson.docx?raw=1)。
+- 完整教案：[HX-001 Markdown](examples/HX-001/lesson.md)／[Word](examples/HX-001/lesson.docx?raw=1)；[COM-001 Markdown](examples/COM-001/lesson.md)／[Word](examples/COM-001/lesson.docx?raw=1)；[EXP-001 Markdown](examples/EXP-001/lesson.md)／[Word](examples/EXP-001/lesson.docx?raw=1)。
 - 每站的 `case.json` 是可編輯病例資料；重新匯出的步驟見[教師與維護說明](docs/teacher-guide.md)。
 - 倉庫包含三個可在 Codex 專案中使用的技能：[`osce-practice-coordinator`](.agents/skills/osce-practice-coordinator/SKILL.md)、[`osce-standardized-patient`](.agents/skills/osce-standardized-patient/SKILL.md)、[`osce-practice-feedback`](.agents/skills/osce-practice-feedback/SKILL.md)。把倉庫作為 Codex 工作目錄後，可在提示中輸入對應的 `$技能名稱`；如未顯示，請重新啟動 Codex。參考 [Codex 技能官方說明](https://learn.chatgpt.com/docs/build-skills)。
 - [練習規則快照](rules.practice.yaml)供本版本匯出與檢查使用；它不是「符合最新國考規範」的證明。

@@ -1,0 +1,272 @@
+station_type: explanation
+number: '3'
+sign: 29歲女性，右下腹痛等待檢查結果
+candidate:
+  background: 你是急診實習醫學生，向病人說明檢查結果與處置
+  tasks:
+  - 說明檢查結果與目前診斷
+  - 討論治療選項、風險與即時處置
+  - 確認理解並說明後續決策與追蹤流程
+  notes:
+  - 本站不評分身體檢查或技術操作；正式手術與麻醉同意書將由外科及麻醉團隊簽署。
+  available_data: 以下急診檢驗與腹部電腦斷層結果進站即可取得；沒有其他檢查可現場追加。
+  report:
+    vitals: BP 118/74 mmHg、HR 88/min、RR 16/min、BT 37.8°C
+    symptoms: 肚臍周圍轉移至右下腹痛 14 小時，輕微噁心，目前疼痛 4/10
+    other: WBC 13,800/μL（Neutrophil 84%）、CRP 3.6 mg/dL；尿液常規正常、尿液驗孕陰性
+    other_2: 腹部電腦斷層：闌尾腫脹壁增厚（直徑 11 mm）伴周圍脂肪浸潤，無自由氣體、腹水或膿瘍
+examiner:
+  setting: 急診觀察區診談室
+  sp_profile: 29歲女性周品妤，國小導師，虛構角色
+  start_position: 坐在診療椅上，右手輕扶右下腹，意識清楚
+  props: 檢驗與影像報告卡、桌椅、語音設備、外部計時器；真人版可設考官一人
+  summary: 29歲周品妤，肚臍周圍痛轉移右下腹14小時，目前疼痛4/10，體溫37.8°C。血液顯示白血球與發炎指數上升，尿液常規正常且驗孕陰性；腹部CT顯示急性非穿孔性闌尾炎（無膿瘍或穿孔）。病人無重大過去病史或藥物過敏。她擔心開刀麻醉風險與傷口恢復會影響下週帶班與校外教學，想知道能否只拿口服消炎藥回家。標準建議為腹腔鏡闌尾切除術並先禁食、靜脈輸液與抗生素；無穿孔個案雖可討論住院抗生素治療，但有治療失敗或復發再手術的不確定性，不宜直接帶口服藥返家。
+  differentials:
+  - 急性非穿孔性闌尾炎（影像與檢驗支持之主診斷）
+  - 闌尾穿孔併局部或瀰漫性腹膜炎、膿瘍（目前影像無，屬延誤處置須警覺之惡化風險）
+  - 右側婦科急症或泌尿道結石感染（已由驗孕陰性、正常尿液與腹部電腦斷層協助排除）
+sp:
+  setting: 急診觀察區診談室
+  start_position: 坐在診療椅上，右手輕扶右下腹
+  emotion: 焦慮6/10；目前右下腹痛4/10
+  manner: 眉頭微蹙、語氣擔憂但可清楚對話；語音版不朗讀肢體動作
+  voice: 自然生活口語，每次回答一至三短句，不主動背出醫學名詞
+  principles: 開場只問報告出來了沒，絕不主動先問『要不要開刀』或『手術有什麼風險』以免餵分。Q01僅在考生說完診斷與手術建議後停頓、且完全未談非手術選項或返家吃藥風險時才問一次。首次回述固定保留喝水與回家吃藥誤解，經澄清才修正。
+  summary: 29歲周品妤，國小導師，急性非穿孔性闌尾炎。擔心麻醉手術與下週帶班請假，原本以為能拿藥回家。經清楚解釋與同理後願留院禁食接受點滴抗生素，並等先生與外科主治醫師確認手術。
+  dialogue:
+  - frame: 開場與理解
+    candidate: 在看報告前，您原本覺得這次腹痛可能是什麼原因？
+    sp: 我原本以為只是腸胃炎，想說拿個藥就能回家休息。
+    question: false
+  - frame: 告知診斷
+    candidate: 抽血發炎指數升高，電腦斷層看到闌尾腫脹發炎，是急性闌尾炎，目前還沒破掉。
+    sp: 竟然是急性闌尾炎，幸好目前還沒破掉。
+    question: false
+  - frame: 探索擔憂
+    candidate: 聽到可能需要住院手術，您最擔心什麼？
+    sp: 我沒開過刀很怕麻醉，而且下禮拜還要帶班，怕請假太久。
+    question: false
+  - frame: 條件性Q01：已說明診斷與手術後停頓，仍未談替代方案
+    candidate: 考生說明手術建議後停頓且未提替代選項
+    sp: 醫師，我下禮拜還要帶班，一定要開刀嗎，能不能拿消炎藥回家吃就好？
+    question: true
+  - frame: 即時處置與警訊
+    candidate: 現在開始完全禁食連水都不能喝，會先打點滴和抗生素；若劇痛變嚴重或高燒要馬上說。
+    sp: 好，我知道現在不能吃喝，有劇痛或發高燒會馬上按鈴。
+    question: false
+  - frame: 共同決策
+    candidate: 考量復發風險與您的工作安排，您目前的想法是什麼？
+    sp: 我傾向這次把發炎的闌尾處理好，等先生到再跟外科主治醫師確認。
+    question: false
+  - frame: Teach-back 初次回述
+    candidate: 為了確認我有講清楚，請您用自己的話說說接下來的注意事項。
+    sp: 所以我現在口渴可以先喝點水，等一下拿口服消炎藥回家觀察，真的破掉再來開刀就好。
+    question: false
+  - frame: Teach-back 澄清後
+    candidate: 現在連水都不能喝喔，而且直接回家吃藥有穿孔風險，我們是留院打點滴等外科醫師。
+    sp: 懂了，連水都不能喝，要留院打點滴跟抗生素，等外科醫師確認手術。
+    question: false
+  room_diagram: 【急診診談室】SP坐診桌左側，考生坐右側（桌面置檢驗與影像報告卡）；真人版考官坐考生右後方，拉簾位於門口側；語音版使用安靜空間與耳麥。
+rubric: checklist
+checklist:
+- id: E01
+  text: 介紹角色、核對身分並關懷當下疼痛或舒適度
+  anchors:
+    '0': 皆未做
+    '1': 僅完成角色核對或關懷舒適度其中一至二項
+    '2': 介紹角色、核對身分並詢問當下疼痛感受
+  fact_ids:
+  - F01
+  star: false
+  generic: true
+  main_construct: false
+  lqqopera: false
+  sp_prompted: false
+- id: E02
+  text: 說明報告前先探索病人對病情的既有理解與期待
+  anchors:
+    '0': 直接開始講報告，完全未探索
+    '1': 僅詢問既有理解或期待其中一項
+    '2': 說明前先探索病人對症狀的想法及今日期待
+  fact_ids:
+  - F02
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E03
+  text: 以白話說明血液、尿液與驗孕檢查結果的臨床意義
+  anchors:
+    '0': 未說明，或僅唸英文縮寫與數字而未解釋
+    '1': 僅白話說明發炎指數上升，未整合尿液或驗孕排除資訊
+    '2': 以白話說明體內發炎反應上升，並整合尿液與驗孕陰性協助排除其他原因
+  fact_ids:
+  - F03
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E04
+  text: 以白話說明腹部電腦斷層發現並明確告知急性闌尾炎診斷
+  anchors:
+    '0': 未告知診斷或說法錯誤
+    '1': 僅說盲腸發炎而未連結影像依據，或夾雜未解釋之影像術語
+    '2': 以白話說明電腦斷層見闌尾腫脹發炎，明確告知急性闌尾炎診斷
+  fact_ids:
+  - F04
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E05
+  text: 說明目前影像無穿孔膿瘍，並解釋延誤治療可能惡化穿孔腹膜炎
+  anchors:
+    '0': 兩者皆未說明，或錯誤宣稱已經穿孔
+    '1': 僅說明目前未穿孔，或僅提延誤風險其中一項
+    '2': 清楚區分目前影像尚無穿孔或膿瘍，並說明延誤處置可能導致穿孔與腹膜炎
+  fact_ids:
+  - F04
+  - F05
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E06
+  text: 探索並具體回應病人對手術麻醉及工作帶班請假的擔憂
+  anchors:
+    '0': 未探索擔憂，或否定、責備病人猶豫
+    '1': 問出擔憂但僅泛稱小手術別擔心，未具體回應工作與麻醉顧慮
+    '2': 探索手術與帶班壓力並具體同理回應，建立共同討論基礎
+  fact_ids:
+  - F06
+  - F07
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E07
+  text: 說明標準手術選項（腹腔鏡闌尾切除術）之目的與進行概念
+  anchors:
+    '0': 未說明手術目的或方式
+    '1': 僅說要開刀，未說明切除發炎闌尾之目的或微創腹腔鏡概念
+    '2': 以白話說明透過腹腔鏡小傷口切除發炎闌尾以移除感染源
+  fact_ids:
+  - F08
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E08
+  text: 說明手術與麻醉常見風險及少見轉傳統開腹手術之可能
+  anchors:
+    '0': 完全未提風險，或保證零風險
+    '1': 僅提一般傷口感染出血或麻醉風險，未提可能視術中狀況轉傳統開腹
+    '2': 說明出血、傷口感染與麻醉風險，並提及少數因嚴重發炎沾黏須轉開腹之可能
+  fact_ids:
+  - F09
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E09
+  text: 主動說明非手術抗生素治療之不確定性並澄清不宜直接帶口服藥返家
+  anchors:
+    '0': 未說明替代選項與返家風險，或同意直接開立口服藥返家
+    '1': 僅說明部分利弊，或經Q01提問後才被動說明抗生素治療限制與返家風險
+    '2': 未經Q01提示即主動說明住院抗生素治療仍有失敗或復發須手術的不確定性，並澄清不宜直接帶藥返家
+  fact_ids:
+  - F10
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: true
+- id: E10
+  text: 說明急診當下即時處置（完全禁食、靜脈輸液、抗生素與止痛）並確認過敏史
+  anchors:
+    '0': 未說明即時處置
+    '1': 僅提禁食或打針其中部分項目，或未確認藥物過敏與最後進食時間
+    '2': 完整說明禁食（含水）、點滴、抗生素與止痛安排，並確認藥物過敏或最後進食時點
+  fact_ids:
+  - F11
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E11
+  text: 說明等待期間須立即反映的惡化警訊（劇痛加劇擴散、高燒寒顫、持續嘔吐）
+  anchors:
+    '0': 未提供任何惡化警訊
+    '1': 僅籠統說不舒服再講，未列具體惡化徵象
+    '2': 具體說明腹痛劇烈加劇或擴散、高燒寒顫、持續嘔吐等警訊及立即通知醫護方式
+  fact_ids:
+  - F12
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E12
+  text: 結合病人工作生活考量探詢治療傾向，實踐共同決策
+  anchors:
+    '0': 單向命令簽名或完全不討論病人傾向
+    '1': 列完選項即結束，未連結帶班考量詢問病人傾向
+    '2': 對照病人在意的恢復與復發風險，邀請表達治療傾向並尊重其與家屬討論需求
+  fact_ids:
+  - F06
+  - F10
+  - F13
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E13
+  text: 清楚說明後續外科主治醫師會診、正式同意書與術前麻醉評估銜接流程
+  anchors:
+    '0': 未說明後續流程，或逾越實習醫學生角色自稱已完成手術同意簽署
+    '1': 僅提會找外科醫師，未說明正式同意書與麻醉評估銜接
+    '2': 清楚說明實習醫學生角色界線，銜接外科主治醫師會診確認、同意書簽署與麻醉評估
+  fact_ids:
+  - F13
+  star: false
+  generic: false
+  main_construct: false
+  lqqopera: false
+  sp_prompted: false
+- id: E14
+  text: Teach-back 邀請回述並澄清『可先喝水及帶口服藥返家觀察』之誤解
+  anchors:
+    '0': 未確認理解或只問有沒有聽懂
+    '1': 有請病人回述，但未完整澄清禁食（不可喝水）或不可直接返家吃藥其中一項誤解
+    '2': 邀請病人用自己的話回述，清楚澄清禁食連水都不能喝及不宜返家吃藥兩項誤解並再次確認
+  fact_ids:
+  - F14
+  - F15
+  star: true
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
+- id: E15
+  text: 結尾摘要目前處置與下一步並邀請剩餘問題
+  anchors:
+    '0': 皆未做，倉促結束
+    '1': 僅摘要處置或僅問有無問題其中一項
+    '2': 簡要重申目前禁食給藥與等待外科會診安排，並邀請且回應剩餘問題
+  fact_ids:
+  - F13
+  - F16
+  star: false
+  generic: false
+  main_construct: true
+  lqqopera: false
+  sp_prompted: false
