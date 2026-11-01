@@ -7,7 +7,7 @@
 | schema_version / station_id / case_version | 格式版本、穩定題號與病例版本 |
 | title / fictional / learner / mode | 教師題名、虛構標記、學員程度與預設練習模式 |
 | design | 主要評量目標、核心任務、能力對齊及設計決定 |
-| station_type / number / sign / candidate | 對應既有 TAME builder 的站型、站號、告示牌與考生指引 |
+| station_type / number / sign / candidate | 對應既有 TAME builder 的站型（`history`、`communication`、`explanation`）、站號、告示牌與考生指引 |
 | examiner / sp | 既有 builder 的考官及 SP 指引；包括對白表與房間文字示意圖 |
 | patient | 身分、開場白、未知資訊回答、情緒轉移與 teach-back 行為 |
 | facts | 病人固定事實；每項有唯一 ID、揭露觸發條件及自然語言回答 |

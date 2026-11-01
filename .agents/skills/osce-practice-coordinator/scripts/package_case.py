@@ -57,6 +57,8 @@ def validate_case(case, rules):
         limit = math.floor(n * rules["station_types"]["history"]["lqqopera_max_fraction"])
         if sum(i["lqqopera"] for i in items) > limit:
             errors.append("Too many LQQOPERA groups")
+    elif any(i["lqqopera"] for i in items):
+        errors.append("LQQOPERA marker only applies to history stations")
     questions = case["active_questions"]
     if len(questions) > rules["sp"]["questions_max"]:
         errors.append("Too many active SP questions")

@@ -16,11 +16,15 @@ packer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(packer)
 rules = yaml.safe_load((ROOT / 'rules.practice.yaml').read_text(encoding='utf-8'))
 cases = {name: json.loads((ROOT / 'examples' / name / 'case.json').read_text(encoding='utf-8'))
-         for name in ('HX-001', 'COM-001')}
+         for name in ('HX-001', 'COM-001', 'EXP-001')}
 
 
 class PublicPackageTests(unittest.TestCase):
-    def test_both_examples_pass_practice_rules(self):
+    def test_all_examples_pass_practice_rules(self):
+        self.assertEqual(
+            {case['station_type'] for case in cases.values()},
+            {'history', 'communication', 'explanation'},
+        )
         for case in cases.values():
             packer.validate_case(case, rules)
 
@@ -54,10 +58,35 @@ class PublicPackageTests(unittest.TestCase):
             packer.validate_case(case, rules)
 
     def test_missing_teachback_is_rejected(self):
-        case = copy.deepcopy(cases['COM-001'])
-        case['sp']['dialogue'] = [d for d in case['sp']['dialogue'] if 'Teach-back' not in d['frame']]
-        with self.assertRaises(ValueError):
-            packer.validate_case(case, rules)
+        for name in ('COM-001', 'EXP-001'):
+            case = copy.deepcopy(cases[name])
+            case['sp']['dialogue'] = [d for d in case['sp']['dialogue'] if 'Teach-back' not in d['frame']]
+            with self.assertRaises(ValueError):
+                packer.validate_case(case, rules)
+
+    def test_non_history_rejects_lqqopera_marker(self):
+        for name in ('COM-001', 'EXP-001'):
+            case = copy.deepcopy(cases[name])
+            case['rubric']['items'][1]['lqqopera'] = True
+            with self.assertRaises(ValueError):
+                packer.validate_case(case, rules)
+
+    def test_committed_exports_stay_synced_with_case_json(self):
+        for name in cases:
+            source = ROOT / 'examples' / name / 'case.json'
+            with tempfile.TemporaryDirectory(dir=ROOT) as tmp:
+                output = Path(tmp) / 'output'
+                packer.export_case(source, ROOT / 'rules.practice.yaml', output)
+                for exported, committed in (
+                    ('考生指引.md', 'candidate.md'),
+                    ('語音演練包.txt', 'voice-packet.txt'),
+                    ('教案內容.yaml', 'lesson.yaml'),
+                ):
+                    self.assertEqual(
+                        (output / exported).read_text(encoding='utf-8'),
+                        (ROOT / 'examples' / name / committed).read_text(encoding='utf-8'),
+                        msg=f'{name}/{committed} is out of sync with case.json',
+                    )
 
     def test_export_embeds_the_case_and_refuses_to_overwrite(self):
         source = ROOT / 'examples/HX-001/case.json'

@@ -1,26 +1,27 @@
 # 教師與維護說明
 
-本專案提供病史詢問與醫病溝通兩種虛構示範，以及從 idea 生成教案、扮演病人、結束後回饋的指令。每題有考生指引、完整教案、語音包及 `case.json`；語音包可直接交給網頁版 ChatGPT。
+本專案提供**病史詢問**、**醫病溝通與衛教**及**病情解釋及臨床處置**三種虛構示範，以及從 idea 生成教案、扮演病人、結束後回饋的指令。每題有考生指引、完整教案、語音包及 `case.json`；語音包可直接交給 ChatGPT（網頁版或 App）。
 
 ## 教師使用前
 
 1. 對照學員程度與教學目標，審閱臨床情境、陽性與陰性線索、病人可能的回答和情緒變化。
-2. 依各項 0／1／2 錨點練習評分；確認觸及評分項目的 SP 提問條件與分數上限。
+2. 依各項 0／1／2 錨點練習評分；確認觸及評分項目的 SP 提問條件與分數上限（病情解釋站尤須確認 SP 不在開場主動追問治療選項與風險以免餵分）。
 3. 讓學生以外部 8 分鐘計時試跑，核對語音辨識、病例一致性及回饋與逐字稿是否相符。
 4. 缺乏完整逐字稿時，將無法判斷的項目列 NA，僅報可評項目小計。不得將缺段直接視為未做到。
 
-兩題現階段尚未完成人類語音測試、教師臨床審閱或評分校準；不宣稱正式考試效度。
+三題現階段尚未完成人類語音測試、教師臨床審閱或評分校準；不宣稱正式考試效度。
 
 ## 病例來源與同步
 
 每題的 `examples/<站次>/case.json` 是此公開版的病例資料來源；`candidate.md`、`lesson.md`、`voice-packet.txt` 與 `lesson.yaml` 是匯出結果。修改病例時，應重新匯出並檢查不同檔案的一致性；不要手動只改其中一份後當作同步完成。Word 需另行產生或編修並逐頁檢視。
 
-兩份附帶 Word 使用既有教案格式作底稿；公開副本清理了原範本文件屬性，並把考官任務提示改為形成性練習用語。原格式與參考教案不等同最新國考規範。
+三份附帶 Word 使用既有教案格式作底稿；公開副本清理了原範本文件屬性，並把考官任務提示改為形成性練習用語。原格式與參考教案不等同最新國考規範。
 
 臨床內容背景：
 
 - HX-001：[NIDDK 膽結石症狀與原因](https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/symptoms-causes)，查閱於 2026-10-26。示範病人並未確診。
 - COM-001：[NIDDK 糖尿病前期](https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance)，查閱於 2026-10-26。個案三個月回診為虛構情境設定，並非通用追蹤間隔。
+- EXP-001：[NIDDK 闌尾炎](https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis)，查閱於 2026-11-01。示範情境之檢驗影像數值與工作帶班脈絡為虛構設計。
 
 ## 可重現匯出
 
@@ -33,6 +34,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python .agents/skills/osce-practice-coordinator/scripts/package_case.py examples/HX-001/case.json --rules rules.practice.yaml --out output/HX-001
 python .agents/skills/osce-practice-coordinator/scripts/package_case.py examples/COM-001/case.json --rules rules.practice.yaml --out output/COM-001
+python .agents/skills/osce-practice-coordinator/scripts/package_case.py examples/EXP-001/case.json --rules rules.practice.yaml --out output/EXP-001
 python -m unittest discover -s tests -v
 ```
 
@@ -44,4 +46,4 @@ python -m unittest discover -s tests -v
 
 ## 發行維護
 
-公開倉庫的技能和規則是供外部學生使用的發布快照。更新時，維護者應先同步檢查教案來源、版本、兩套示範、規則數值與匯出測試，再以 Git 記錄發布版本。不要上傳任何可識別病人的原始資料。
+公開倉庫的技能和規則是供外部學生使用的發布快照。更新時，維護者應先同步檢查教案來源、版本、三套示範、規則數值與匯出測試，再以 Git 記錄發布版本。不要上傳任何可識別病人的原始資料。
