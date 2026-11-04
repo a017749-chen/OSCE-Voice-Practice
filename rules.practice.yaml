@@ -27,3 +27,22 @@ sp:
   scoring_questions_max: 2
   dialogue_question_rows_max: 2
   prompted_item_score_cap: 1
+baseline_fact_coverage:
+  history:
+    past_history: [既往, 過去病史, 慢性病, 手術, 住院, 生過大病]
+    medication: [藥物, 用藥, 吃藥, 保健品, 止痛藥]
+    allergy: [過敏]
+    social_lifestyle: [菸, 抽菸, 喝酒, 啤酒, 飲酒, 工作, 職業, 飲食]
+    family_history: [家族, 家人, 父親, 母親, 爸爸, 媽媽, 父母]
+    patient_perspective: [擔心, 擔憂, 想法, 期待, 以為, 顧慮]
+  communication:
+    prior_understanding: [理解, 想法, 以為, 看法, 認知]
+    concerns_emotion: [擔憂, 擔心, 怕, 焦慮, 顧慮]
+    life_context: [工作, 生活, 夜班, 家庭, 日常, 障礙, 飲食]
+    past_history_medication: [既往, 過去病史, 病史, 慢性病, 藥物, 用藥, 吃藥]
+    allergy: [過敏]
+  explanation:
+    prior_understanding: [理解, 想法, 猜測, 以為, 期待, 看法]
+    concerns_life_context: [擔憂, 擔心, 怕, 顧慮, 工作, 請假, 家庭, 生活, 帶班]
+    past_history_medication: [既往, 過去病史, 病史, 大病, 慢性病, 藥物, 用藥, 吃藥, 進食, 吃東西]
+    allergy: [過敏]
