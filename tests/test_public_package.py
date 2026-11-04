@@ -71,6 +71,23 @@ class PublicPackageTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 packer.validate_case(case, rules)
 
+    def test_missing_baseline_fact_coverage_is_rejected(self):
+        for name, target_fact_id in (('HX-001', 'F12'), ('COM-001', 'F14'), ('EXP-001', 'F11')):
+            case = copy.deepcopy(cases[name])
+            for fact in case['facts']:
+                if fact['id'] == target_fact_id:
+                    fact['trigger'] = '詢問一般近況'
+                    fact['response'] = '最近跟平常一樣。'
+            with self.assertRaises(ValueError):
+                packer.validate_case(case, rules)
+
+    def test_prompts_embed_current_runtime_and_feedback_instructions(self):
+        expected_runtime = packer.runtime_text(rules)
+        idea_prompt = (ROOT / 'prompts/idea-to-case.txt').read_text(encoding='utf-8')
+        sp_prompt = (ROOT / 'prompts/standardized-patient.txt').read_text(encoding='utf-8')
+        self.assertIn(expected_runtime, idea_prompt)
+        self.assertTrue(sp_prompt.endswith(expected_runtime))
+
     def test_committed_exports_stay_synced_with_case_json(self):
         for name in cases:
             source = ROOT / 'examples' / name / 'case.json'

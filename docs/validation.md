@@ -5,7 +5,7 @@
 | 檢查 | 結果 |
 |---|---|
 | 三個技能 | 技能格式檢查通過；支援 `history`、`communication`、`explanation` 三種站型 |
-| 匯出與同步測試 | 11 項離線單元測試通過，含無效資料攔截、拒絕覆寫、Teach-back 與 LQQOPERA 題型限制及三站匯出同步檢查 |
+| 匯出與同步測試 | 13 項離線單元測試通過，含無效資料攔截、基線事實覆蓋檢核（防編造）、拒絕覆寫、Teach-back 與 LQQOPERA 題型限制、提示指令同步及三站匯出同步檢查 |
 | 公開版與正本規則 | 三份病例都通過公開版 `rules.practice.yaml` 與正本 `rules.yaml` 檢核並匯出成功 |
 | Word 結構 | HX-001：21 PASS；COM-001：22 PASS；EXP-001：22 PASS；三者皆無 WARN／FAIL |
 | Word 版面 | 三份公開 Word 清理原範本文件屬性、改用形成性練習考官提示，並轉 PDF 逐頁檢視 |

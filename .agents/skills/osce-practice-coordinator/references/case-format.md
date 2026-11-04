@@ -20,7 +20,7 @@
 
 每項包含 id、text、anchors（字串鍵 0、1、2）、fact_ids；star、generic、main_construct、lqqopera、sp_prompted 是標準化檢查用的布林標記。標記不取代對題意的人工判斷。main_construct 與 lqqopera 分組在設計階段確認，不能靠改標記規避比例規則。sp_prompted 表示此項可能被既定主動提問提示，只有實際發生後才套用上限。
 
-每個 SP 相關項目至少連結一個 fact；純考生說明項目可連結病人理解／回應 fact。facts、examiner.summary、sp.summary 若重述相同資訊，必須交叉核對；工具不能自動判斷語意矛盾。
+每個 SP 相關項目至少連結一個 fact；純考生說明項目可連結病人理解／回應 fact。此外，`facts` 必須涵蓋各站型常規會被詢問的基線事實（`baseline_fact_coverage`，如既往史、用藥、過敏、生活脈絡與病人觀點），配合執行期的封閉世界防編造規則（未寫入 `facts`／`candidate.report`／`patient` 的資訊一律視為未知，不得預設為正常或陰性）。facts、examiner.summary、sp.summary 若重述相同資訊，必須交叉核對；工具不能自動判斷語意矛盾。
 
 ## 可見與延後揭露
 

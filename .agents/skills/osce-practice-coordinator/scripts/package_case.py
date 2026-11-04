@@ -17,6 +17,30 @@ import yaml
 SKILL = Path(__file__).resolve().parents[1]
 SKILLS = SKILL.parent
 
+DEFAULT_BASELINE_FACT_COVERAGE = {
+    "history": {
+        "past_history": ["既往", "過去病史", "慢性病", "手術", "住院", "生過大病"],
+        "medication": ["藥物", "用藥", "吃藥", "保健品", "止痛藥"],
+        "allergy": ["過敏"],
+        "social_lifestyle": ["菸", "抽菸", "喝酒", "啤酒", "飲酒", "工作", "職業", "飲食"],
+        "family_history": ["家族", "家人", "父親", "母親", "爸爸", "媽媽", "父母"],
+        "patient_perspective": ["擔心", "擔憂", "想法", "期待", "以為", "顧慮"],
+    },
+    "communication": {
+        "prior_understanding": ["理解", "想法", "以為", "看法", "認知"],
+        "concerns_emotion": ["擔憂", "擔心", "怕", "焦慮", "顧慮"],
+        "life_context": ["工作", "生活", "夜班", "家庭", "日常", "障礙", "飲食"],
+        "past_history_medication": ["既往", "過去病史", "病史", "慢性病", "藥物", "用藥", "吃藥"],
+        "allergy": ["過敏"],
+    },
+    "explanation": {
+        "prior_understanding": ["理解", "想法", "猜測", "以為", "期待", "看法"],
+        "concerns_life_context": ["擔憂", "擔心", "怕", "顧慮", "工作", "請假", "家庭", "生活", "帶班"],
+        "past_history_medication": ["既往", "過去病史", "病史", "大病", "慢性病", "藥物", "用藥", "吃藥", "進食", "吃東西"],
+        "allergy": ["過敏"],
+    },
+}
+
 
 def native_station(case):
     station = {k: case[k] for k in ("station_type", "number", "sign", "candidate", "examiner", "sp")}
@@ -83,6 +107,11 @@ def validate_case(case, rules):
     if rules["station_types"][case["station_type"]].get("teach_back_required"):
         if not any("teach" in d["frame"].lower() or "回述" in d["frame"] for d in case["sp"]["dialogue"]):
             errors.append("Missing teach-back dialogue")
+    fact_corpus = "\n".join(f"{f['trigger']} {f['response']}" for f in facts)
+    coverage = rules.get("baseline_fact_coverage", DEFAULT_BASELINE_FACT_COVERAGE).get(case["station_type"], {})
+    for category, keywords in coverage.items():
+        if not any(kw in fact_corpus for kw in keywords):
+            errors.append(f"Missing baseline fact coverage ({case['station_type']}.{category})")
     if errors:
         raise ValueError("Case validation failed:\n" + "\n".join(errors))
 
