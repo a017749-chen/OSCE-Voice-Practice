@@ -124,9 +124,19 @@ def runtime_text(rules):
             f"{rules['sp']['prompted_item_score_cap']} 分。\n")
 
 
+# Student-facing labels for candidate.report keys. "other", "other_2", ... carry their own
+# description in the value (e.g. "腹部電腦斷層：…"), so they are listed without a label.
+REPORT_LABELS = {"vitals": "生命徵象", "symptoms": "症狀"}
+
+
+def report_line(key, value):
+    label = REPORT_LABELS.get(key)
+    return f"- {label}：{value}" if label else f"- {value}"
+
+
 def candidate_text(case, rules):
     cand = case["candidate"]
-    report = "\n".join(f"- {key}：{value}" for key, value in cand["report"].items())
+    report = "\n".join(report_line(key, value) for key, value in cand["report"].items())
     return (f"# {case['station_id']} 考生指引\n\n"
             f"版本：{case['case_version']}｜虛構教學情境｜對象：{case['learner']}\n\n"
             f"背景：{cand['background']}\n\n任務：\n" +
