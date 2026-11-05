@@ -105,6 +105,13 @@ class PublicPackageTests(unittest.TestCase):
                         msg=f'{name}/{committed} is out of sync with case.json',
                     )
 
+    def test_candidate_guide_has_no_internal_report_keys(self):
+        for name, case in cases.items():
+            guide = packer.candidate_text(case, rules)
+            for key in case['candidate']['report']:
+                self.assertNotIn(f'- {key}：', guide, msg=f'{name}: raw key {key} shown to the candidate')
+            self.assertIn('- 生命徵象：', guide)
+
     def test_export_embeds_the_case_and_refuses_to_overwrite(self):
         source = ROOT / 'examples/HX-001/case.json'
         before = source.read_bytes()
